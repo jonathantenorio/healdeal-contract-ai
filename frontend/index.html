@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealDeal Contract Analyzer</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <h1>Gestão inteligente de contratos</h1>
+        <p>
+          Faça upload de contratos em PDF ou Word, receba uma revisão automática
+          com IAs open-source e mantenha seu portfólio organizado.
+        </p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>Enviar novo contrato</h2>
+        <form id="upload-form" class="form">
+          <label class="form__label" for="file-input">Selecione o arquivo</label>
+          <input id="file-input" type="file" accept=".pdf,.doc,.docx" required />
+          <button type="submit" class="button">Analisar contrato</button>
+          <p class="form__hint">
+            A análise completa leva alguns instantes. Mantemos os arquivos em um
+            repositório seguro apenas para consulta.
+          </p>
+          <p id="upload-status" class="status"></p>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="card__header">
+          <h2>Contratos analisados</h2>
+          <button id="refresh-button" class="button button--ghost">Atualizar</button>
+        </div>
+        <ul id="contract-list" class="contract-list"></ul>
+      </section>
+
+      <section class="card card--highlight" id="details">
+        <h2>Detalhes do contrato</h2>
+        <div id="details-content" class="details">
+          <p>Envie um contrato ou selecione um item para ver o resumo.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        HealDeal &mdash; Plataforma de IA para gestão de contratos. Modelos
+        open-source executados localmente para proteger seus dados.
+      </p>
+    </footer>
+    <script src="/static/app.js" type="module"></script>
+  </body>
+</html>
