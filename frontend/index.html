@@ -3,63 +3,179 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HealDeal Contract Analyzer</title>
-    <link rel="stylesheet" href="/static/styles.css" />
+    <title>HealDeal Contract Analyzer - IA para Análise de Contratos</title>
+    <meta name="description" content="Análise automática de contratos com IA open-source. Resumos, revisões e sugestões de compliance em segundos." />
+    <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <!-- Background decorations -->
+    <div class="bg-decoration bg-decoration--1"></div>
+    <div class="bg-decoration bg-decoration--2"></div>
+    <div class="bg-decoration bg-decoration--3"></div>
+    
     <header class="hero">
       <div class="hero__content">
-        <h1>Gestão inteligente de contratos</h1>
-        <p>
-          Faça upload de contratos em PDF ou Word, receba uma revisão automática
-          com IAs open-source e mantenha seu portfólio organizado.
+        <div class="hero__badge">
+          <svg class="hero__badge-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 1L10.163 5.38L15 6.12L11.5 9.54L12.326 14.36L8 12.1L3.674 14.36L4.5 9.54L1 6.12L5.837 5.38L8 1Z" fill="currentColor"/>
+          </svg>
+          <span>Powered by Open-Source AI</span>
+        </div>
+        <h1 class="hero__title">
+          <span class="hero__title-gradient">Gestão inteligente</span>
+          <span class="hero__title-normal">de contratos</span>
+        </h1>
+        <p class="hero__description">
+          Faça upload de contratos em PDF ou Word e receba análises profundas em segundos. 
+          IA open-source, dados protegidos e 100% privado.
         </p>
+        <div class="hero__features">
+          <div class="hero__feature">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+            </svg>
+            <span>Resumo Executivo</span>
+          </div>
+          <div class="hero__feature">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+            </svg>
+            <span>Análise de Riscos</span>
+          </div>
+          <div class="hero__feature">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+            </svg>
+            <span>Sugestões de Compliance</span>
+          </div>
+        </div>
       </div>
     </header>
 
     <main class="layout">
-      <section class="card">
-        <h2>Enviar novo contrato</h2>
+      <section class="card card--upload">
+        <div class="card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+          </svg>
+        </div>
+        <h2 class="card__title">Enviar novo contrato</h2>
+        <p class="card__subtitle">Arraste ou selecione um arquivo para começar</p>
         <form id="upload-form" class="form">
-          <label class="form__label" for="file-input">Selecione o arquivo</label>
-          <input id="file-input" type="file" accept=".pdf,.doc,.docx" required />
-          <button type="submit" class="button">Analisar contrato</button>
-          <p class="form__hint">
-            A análise completa leva alguns instantes. Mantemos os arquivos em um
-            repositório seguro apenas para consulta.
-          </p>
+          <div class="file-upload-wrapper" id="file-upload-wrapper">
+            <input id="file-input" type="file" accept=".pdf,.doc,.docx" required aria-label="Selecione um arquivo de contrato" title="Selecione um arquivo PDF, DOC ou DOCX" />
+            <div class="file-upload-placeholder">
+              <svg class="file-upload-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                <polyline points="13 2 13 9 20 9"/>
+              </svg>
+              <p class="file-upload-text"><strong>Clique para selecionar</strong> ou arraste o arquivo aqui</p>
+              <p class="file-upload-hint">PDF, DOC ou DOCX • Máx. 50MB</p>
+            </div>
+            <div class="file-upload-selected hidden" id="file-selected">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                <polyline points="13 2 13 9 20 9"/>
+              </svg>
+              <div class="file-info">
+                <p class="file-name" id="file-name">documento.pdf</p>
+                <p class="file-size" id="file-size">2.4 MB</p>
+              </div>
+              <button type="button" class="file-remove" id="file-remove" aria-label="Remover arquivo" title="Remover arquivo selecionado">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="button button--primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+            <span>Analisar com IA</span>
+          </button>
           <p id="upload-status" class="status"></p>
         </form>
       </section>
 
       <section class="card">
         <div class="card__header">
-          <h2>Contratos analisados</h2>
-          <button id="refresh-button" class="button button--ghost">Atualizar</button>
+          <div>
+            <h2 class="card__title">Contratos analisados</h2>
+            <p class="card__subtitle">Histórico de análises realizadas</p>
+          </div>
+          <button id="refresh-button" class="button button--ghost button--icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+            </svg>
+            <span>Atualizar</span>
+          </button>
         </div>
         <ul id="contract-list" class="contract-list"></ul>
       </section>
 
-      <section class="card card--highlight" id="details">
-        <h2>Detalhes do contrato</h2>
+      <section class="card card--details" id="details">
+        <div class="card__header">
+          <h2 class="card__title">Análise detalhada</h2>
+        </div>
         <div id="details-content" class="details">
-          <p>Envie um contrato ou selecione um item para ver o resumo.</p>
+          <div class="empty-state">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+            <p>Envie um contrato ou selecione um item para ver a análise completa</p>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>
-        HealDeal &mdash; Plataforma de IA para gestão de contratos. Modelos
-        open-source executados localmente para proteger seus dados.
-      </p>
+      <div class="footer__content">
+        <div class="footer__section">
+          <h3 class="footer__logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+            HealDeal
+          </h3>
+          <p class="footer__description">
+            Plataforma de IA para análise inteligente de contratos. 
+            Modelos open-source executados localmente para proteger seus dados.
+          </p>
+        </div>
+        <div class="footer__section">
+          <h4 class="footer__title">Tecnologia</h4>
+          <ul class="footer__list">
+            <li>FastAPI + Python</li>
+            <li>Transformers (Hugging Face)</li>
+            <li>100% Open-Source</li>
+          </ul>
+        </div>
+        <div class="footer__section">
+          <h4 class="footer__title">Privacidade</h4>
+          <ul class="footer__list">
+            <li>Dados locais</li>
+            <li>Sem rastreamento</li>
+            <li>IA executada localmente</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 HealDeal Contract Analyzer. Todos os direitos reservados.</p>
+      </div>
     </footer>
-    <script src="/static/app.js" type="module"></script>
+    <script src="app.js" type="module"></script>
   </body>
 </html>
